@@ -1,5 +1,9 @@
 # centosCommands
 
+## Instalação de pacotes .rpm
+
+```sudo rpm -Uvh <package>.rpm```
+
 ## yum
 
 ### pesquisa
