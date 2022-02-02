@@ -1,4 +1,5 @@
-# centosCommands
+# centOS Commands
+
 
 ## Instalação de pacotes .rpm
 
