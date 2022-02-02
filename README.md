@@ -4,15 +4,15 @@
 
 ### pesquisa
 
-```yum search \<package name\>```
+```yum search <package name>```
 
 ### verifica versão
 
-```yum info \<package name\>```
+```yum info <package name>```
 
 ### desinstala pacote
 
-```yum remove \<package name\>```
+```yum remove <package name>```
 
 ## gerenciamento de processos
 
