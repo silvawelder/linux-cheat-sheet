@@ -28,3 +28,14 @@
 ### mata o processo    
 
 ```sudo kill <PID>```
+
+## firewalld
+
+### Libera trafego de entrada nas portas    
+
+```sudo firewall-cmd --zone=public --permanent --add-port=4369/tcp```
+
+### Recarrega a sessão atual do firewalld para aplicar mudanças realizadas
+
+```sudo firewall-cmd --reload```
+
