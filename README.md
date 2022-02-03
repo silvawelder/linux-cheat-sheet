@@ -1,9 +1,11 @@
 # centOS Commands
 
 
+
 ## Instalação de pacotes .rpm
 
 ```sudo rpm -Uvh <package>.rpm```
+
 
 ## yum
 
@@ -19,6 +21,7 @@
 
 ```yum remove <package name>```
 
+
 ## gerenciamento de processos
 
 ### lista processo baseado na porta que ele esta rodando 
@@ -28,6 +31,8 @@
 ### mata o processo    
 
 ```sudo kill <PID>```
+
+
 
 ## firewalld
 
