@@ -44,3 +44,9 @@
 
 ```sudo firewall-cmd --reload```
 
+
+## network commands
+
+### Lista conexões filtrando por porta   
+
+```sudo netstat -putan | grep <port>```
