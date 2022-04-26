@@ -44,6 +44,9 @@
 
 ```sudo firewall-cmd --reload```
 
+### Show all rules in firewalld
+```sudo firewall-cmd --list-all```
+
 
 ## network commands
 
