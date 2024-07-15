@@ -121,3 +121,11 @@ nslookup google.com
 ### Update packages
 
 ``` zypper update ```
+
+## Add external package repository
+
+``` 
+zypper addrepo https://download.opensuse.org/repositories/server:http/15.5/server:http.repo
+zypper addrepo https://download.opensuse.org/repositories/network/15.5/network.repo
+zypper refresh
+```
