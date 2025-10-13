@@ -134,6 +134,7 @@ zypper refresh
 
 ## Daily Heroes:
 ```
+• netstat -anp | grep {process-name} - network connections opened
 • ps aux | grep {process} - Encontre aquele processo furtivo
 • lsof -i :{port} - Quem está monopolizando aquela porta?
 • df -h - O clássico verificador de "estamos sem espaço"
