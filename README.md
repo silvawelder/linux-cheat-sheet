@@ -205,3 +205,20 @@ zypper refresh
 • alias - Criador de atalhos de comando
 • watch - Repetidor de comandos
 ```
+
+# Networking
+## network interfaces
+
+get interface
+```bash
+ip address show
+```
+get routes on a machine
+```bash
+ip route show
+```
+
+get default gateway
+```bash
+ip route show default
+```
