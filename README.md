@@ -222,3 +222,70 @@ get default gateway
 ```bash
 ip route show default
 ```
+
+# Disk Management
+
+## Scenario:
+
+Using Vitual box interface i resized the VM disk, but i need to do the steps bellow to allocate the free space:
+
+01 - Increase partition size
+02 - Increase LVM size
+
+if I run parted /dev/sda print free I see an unalocated space:
+```
+root@node-00:/home/welder# parted /dev/sda print free
+
+Model: ATA VBOX HARDDISK (scsi)
+Disk /dev/sda: 22,0GB
+Sector size (logical/physical): 512B/512B
+Partition Table: gpt
+Disk Flags:
+
+Number  Start   End     Size    File system  Name  Flags
+        17,4kB  1049kB  1031kB  Free Space
+ 1      1049kB  2097kB  1049kB                     bios_grub
+ 2      2097kB  1881MB  1879MB  ext4
+ 3      1881MB  11,2GB  9312MB
+        11,2GB  22,0GB  10,8GB  Free Space
+```
+when you are doing a disk resizing in a VM, some partitions is used for storage some definition to filesystem, then when you run fdisk on resized device  something like that apears:
+```
+GPT PMBR size mismatch (21866191 != 42986175) will be corrected by write.
+The backup GPT table is not on the end of the device. This problem will be corrected by write.
+This disk is currently in use - repartitioning is probably a bad idea.
+It's recommended to umount all file systems, and swapoff all swap
+partitions on this disk.
+```
+to fix that on a easy way use parted:
+```
+parted -l 
+```
+the output will show something like that:
+```
+Warning: Not all of the space available to /dev/sda appears to be used, you can
+fix the GPT to use all of the space (an extra 21119984 blocks) or continue with
+the current setting?
+Fix/Ignore?
+ 
+Type Fix and the magic is done
+Model: ATA VBOX HARDDISK (scsi)
+Disk /dev/sda: 22,0GB
+Sector size (logical/physical): 512B/512B
+Partition Table: gpt
+Disk Flags:
+
+Number  Start   End     Size    File system  Name  Flags
+ 1      1049kB  2097kB  1049kB                     bios_grub
+ 2      2097kB  1881MB  1879MB  ext4
+ 3      1881MB  11,2GB  9312MB
+```
+
+then to allocate all the space on a partition you can use:
+```
+growpart /dev/sda 3
+```
+important note: in my case, I have just one disk which is the sda and I want to increase the size of partition 3
+
+
+Then now I can do the resize of lvm in partition sda3
