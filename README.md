@@ -229,8 +229,8 @@ ip route show default
 
 Using Vitual box interface i resized the VM disk, but i need to do the steps bellow to allocate the free space:
 
-01 - Increase partition size
-02 - Increase LVM size
+* 01 - Increase partition size
+* 02 - Increase LVM size
 
 if I run parted /dev/sda print free I see an unalocated space:
 ```
@@ -289,3 +289,18 @@ important note: in my case, I have just one disk which is the sda and I want to 
 
 
 Then now I can do the resize of lvm in partition sda3
+
+list lvm to indentify
+```
+lvdisplay
+```
+
+After get the lv name expand using the bellow command
+```
+lvextend /dev/ubuntu-vg/ubuntu-lv -l+100%FREE
+```
+
+run command to expand 
+```
+resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
+```
